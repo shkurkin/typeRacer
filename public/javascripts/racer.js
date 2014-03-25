@@ -1,7 +1,7 @@
 var APP = {}
 
 $(function(){
-  APP.socket = io.connect('http://localhost:3700');
+  APP.socket = io.connect(window.location.hostname);
   WatchTyping.init();
 })
 
