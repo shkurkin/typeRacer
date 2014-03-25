@@ -35,18 +35,17 @@ var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function(socket) {
-  var clientNames = getClients();
-  io.sockets.emit('connect', clientNames)
+  io.sockets.emit('updateClients', getClients());
+
   socket.on('send', function(data) {
     io.sockets.emit('message', data);
-  })
+  });
 })
 
 function getClients() {
   var clients = io.sockets.clients();
   var clientNames = [];
   for(var i = 0; i<clients.length; i++) {
-    console.log(clients[i].id + "new client");
     clientNames.push(clients[i].id);
   }
   return clientNames;

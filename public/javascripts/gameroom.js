@@ -1,14 +1,14 @@
 $(function(){
-
+  GameRoom.init();
 })
 
 var GameRoom = (function(){
   function bindEvents() {
-    APP.socket.on('connect', updateUsers)
+    APP.socket.on('updateClients', updateClientList)
   }
 
-  function updateUsers() {
-
+  function updateClientList(data) {
+    $('#currentUsers').html(data.join(" "))
   }
 
   function _init() {

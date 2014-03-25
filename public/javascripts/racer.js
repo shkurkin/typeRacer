@@ -12,7 +12,7 @@ var WatchTyping = (function() {
     APP.socket.on('message', updateTextUniversal);
   }
 
-  function updateTextUniversal(data, clientNames) {
+  function updateTextUniversal(data) {
     $('#typeZone').html(data.message)
   }
 
