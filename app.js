@@ -35,11 +35,22 @@ var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function(socket) {
-  socket.emit('message', { message: "Welome to typeRacer" });
+  var clientNames = getClients();
+  io.sockets.emit('connect', clientNames)
   socket.on('send', function(data) {
     io.sockets.emit('message', data);
   })
 })
+
+function getClients() {
+  var clients = io.sockets.clients();
+  var clientNames = [];
+  for(var i = 0; i<clients.length; i++) {
+    console.log(clients[i].id + "new client");
+    clientNames.push(clients[i].id);
+  }
+  return clientNames;
+}
 
 server.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
