@@ -13,11 +13,12 @@ var WatchTyping = (function() {
   }
 
   function updateTextUniversal(data) {
-    $('#typeZone').html(data.message)
+    $('#' + data.user).html(data.message);
   }
 
   function checkKey(event) {
-    var $textWrap = $('#typeZone');
+    event.preventDefault();
+    var $textWrap = $('#userText');
     var currentChar = $textWrap.html().charCodeAt(0);
     var charTyped = event.which;
     if (currentChar === charTyped) {
@@ -35,7 +36,10 @@ var WatchTyping = (function() {
   }
 
   function sendSocket(newText) {
-    APP.socket.emit('send', { message: newText})
+    APP.socket.emit('send', {
+      user: APP.user,
+      message: newText
+    });
   }
 
   function _init() {

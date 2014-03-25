@@ -35,6 +35,8 @@ var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function(socket) {
+  io.sockets.emit('make user', socket.id);
+
   io.sockets.emit('updateClients', getClients());
 
   socket.on('send', function(data) {
