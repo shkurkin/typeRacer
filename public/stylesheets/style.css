@@ -1,5 +1,8 @@
+/*********
+ General
+*********/
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -9,4 +12,82 @@ a {
 
 #template {
   display: none;
+}
+
+
+/*********
+ Left Nav
+**********/
+
+#leftNav {
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3cf;
+  color: white;
+  text-align: center;
+}
+
+#title {
+  margin-bottom: 30px;
+}
+
+/**************
+ Main Content
+**************/
+
+#contentWrapper {
+  width: 100%;
+}
+
+#mainContent {
+  padding: 0 20px 0 320px;
+}
+
+
+/***********
+ User Lane
+************/
+
+#userLane {
+  border: 2px solid #3cf;
+  margin-bottom: 30px;
+}
+
+#userLane .username {
+  display: inline-block;
+  padding: 5px 30px;
+  margin: 0;
+  border-right: 2px solid #3cf;
+  border-bottom: 2px solid #3cf;
+}
+
+#userText {
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+
+/************
+ Other Lanes
+************/
+
+#template {
+  border: 2px solid aliceblue;
+  margin-bottom: 20px;
+}
+
+#template .username {
+  display: inline-block;
+  color: #999;
+  padding: 5px 20px;
+  margin: 0;
+  border-right: 2px solid aliceblue;
+  border-bottom: 2px solid aliceblue;
+}
+
+#template .text {
+  margin-left: 20px;
 }

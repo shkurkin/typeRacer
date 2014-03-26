@@ -1,13 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  #currentUsers
-  #userBoard
-    p.username Your Board
-    p#userText HERE IS SOME TEXT TO TYPE
-  #otherBoards
-  #template
-    p.username
-    p.text HERE IS SOME TEXT TO TYPE
+  #leftNav
+    h1#title TypeRacer
+    h3 Current Users
+    #currentUsers
+  #contentWrapper
+    #mainContent
+      #userLane
+        p.username Your Lane
+        p#userText HERE IS SOME TEXT TO TYPE
+      #otherLanes
+      #template
+        p.username
+        p.text HERE IS SOME TEXT TO TYPE
 
