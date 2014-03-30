@@ -35,12 +35,15 @@ var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function(socket) {
-  io.sockets.emit('make user', socket.id);
-
+  io.sockets.emit('makeUser', socket.id);
   io.sockets.emit('updateClients', getClients());
 
   socket.on('send', function(data) {
     io.sockets.emit('message', data);
+  });
+
+  socket.on('disconnect', function() {
+    io.sockets.emit('disconnected', getClients());
   });
 })
 
