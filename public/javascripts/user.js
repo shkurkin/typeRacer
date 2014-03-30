@@ -1,10 +1,14 @@
 $(function() {
-  APP.socket.on('makeUser', function(data) {
-    APP.user = APP.user || data
-  });
+  APP.socket.on('makeUser', UserFunctions.make);
+  APP.socket.on('updateTracks', UserFunctions.updateTracks);
+});
 
-  APP.socket.on('disconnected', function(data) {
-    console.log(data);
+var UserFunctions = (function(){
+  function _make(data) {
+    APP.user = APP.user || data;
+  }
+
+  function _updateTracks(data) {
     var $usernames = $('.username');
     $.each($usernames, function(i, username) {
       var include = $.inArray($(username).html(), data)
@@ -12,5 +16,10 @@ $(function() {
         $(username).parent().remove()
       }
     });
-  });
-});
+  }
+
+  return {
+    make: _make,
+    updateTracks: _updateTracks
+  }
+}());

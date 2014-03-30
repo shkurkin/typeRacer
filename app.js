@@ -37,13 +37,14 @@ var io = require('socket.io').listen(server);
 io.sockets.on('connection', function(socket) {
   io.sockets.emit('makeUser', socket.id);
   io.sockets.emit('updateClients', getClients());
+  io.sockets.emit('updateTracks', getClients());
 
   socket.on('send', function(data) {
     io.sockets.emit('message', data);
   });
 
   socket.on('disconnect', function() {
-    io.sockets.emit('disconnected', getClients());
+    io.sockets.emit('updateTracks', getClients());
   });
 })
 

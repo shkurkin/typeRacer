@@ -22,7 +22,7 @@ var Track = (function(){
 
   function updateLanes(data) {
     for (var i=0; i<data.length; i++) {
-      if($("." + data[i]).length === 0 && data[i] != APP.user) {
+      if($("#" + data[i]).length === 0 && data[i] != APP.user) {
         appendLane(data[i]);
       }
     }
