@@ -39,13 +39,17 @@ io.sockets.on('connection', function(socket) {
   io.sockets.emit('updateClients', getClients());
   io.sockets.emit('updateTracks', getClients());
 
-  socket.on('send', function(data) {
-    io.sockets.emit('message', data);
+  socket.on('keypress', function(data) {
+    io.sockets.emit('updateText', data);
   });
 
   socket.on('disconnect', function() {
     io.sockets.emit('updateTracks', getClients());
   });
+
+  socket.on('setName', function(data) {
+    io.sockets.emit('updateName', data);
+  })
 })
 
 function getClients() {

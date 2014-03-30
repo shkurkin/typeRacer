@@ -15,7 +15,7 @@ var Track = (function(){
   function updateClientList(data) {
     var clientList = ''
     for(var i=0; i<data.length; i++) {
-      clientList += '<p class="user">' + data[i] + '</p>'
+      clientList += '<p class="user ' + data[i] + '">' + data[i] + '</p>'
     }
     $('#currentUsers').html(clientList);
   }
@@ -30,7 +30,7 @@ var Track = (function(){
 
   function appendLane(username) {
     var newLane = $('#template').clone();
-    newLane.find('.username').html(username);
+    newLane.find('.username').html(username).addClass(username);
     newLane.find('.text').attr('id', username);
     newLane.show();
     $('#otherLanes').append(newLane);

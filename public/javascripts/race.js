@@ -2,14 +2,14 @@ var APP = {}
 
 $(function(){
   APP.socket = io.connect(window.location.hostname);
-  WatchTyping.init();
+  $('#beginGame').on('click', WatchTyping.init);
 })
 
 var WatchTyping = (function() {
 
   function bindEvents() {
     $('html').on('keydown', checkKey);
-    APP.socket.on('message', updateTextUniversal);
+    APP.socket.on('updateText', updateTextUniversal);
   }
 
   function updateTextUniversal(data) {
@@ -36,7 +36,7 @@ var WatchTyping = (function() {
   }
 
   function sendSocket(newText) {
-    APP.socket.emit('send', {
+    APP.socket.emit('keypress', {
       user: APP.user,
       message: newText
     });

@@ -3,8 +3,12 @@ extends layout
 block content
   #leftNav
     h1#title TypeRacer
+    form#setUserName
+      input(type='text')
+      input(type='submit' value='Set Name')
     h3 Current Users
     #currentUsers
+    button#beginGame Begin!
   #contentWrapper
     #mainContent
       #userLane
