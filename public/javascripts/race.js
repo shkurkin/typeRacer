@@ -2,7 +2,7 @@ var APP = {}
 
 $(function(){
   APP.socket = io.connect(window.location.hostname);
-  $('#beginGame').on('click', WatchTyping.init);
+  WatchTyping.init();
 })
 
 var WatchTyping = (function() {
@@ -17,7 +17,9 @@ var WatchTyping = (function() {
   }
 
   function checkKey(event) {
-    event.preventDefault();
+    if(event.which === 8){
+      event.preventDefault();
+    }
     var $textWrap = $('#userText');
     var currentChar = $textWrap.html().charCodeAt(0);
     var charTyped = event.which;
