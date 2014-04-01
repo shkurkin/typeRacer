@@ -17,7 +17,7 @@ var WatchTyping = (function() {
   }
 
   function checkKey(event) {
-    if(event.which === 8){
+    if(event.which === 8 || event.which === 32 ){
       event.preventDefault();
     }
     var $textWrap = $('#userText');
