@@ -7,7 +7,15 @@ $(function() {
 
 var UserFunctions = (function(){
   function bindEvents() {
+    $('#setUserName input').on('focus', unbindKeys);
+
+    $('#setUserName').on('focusout', WatchTyping.init);
+
     $('#setUserName').on('submit', setName)
+  }
+
+  function unbindKeys() {
+    $('html').unbind('keydown');
   }
 
   function setName(event) {
